@@ -1,0 +1,25 @@
+<body style = "background-color: #9BA39D ">
+	<br>
+	<br>
+	<br>
+	<br>
+
+<form method="POST", action = "{{ url_for('.register') }}">
+	<div class="form-group" style = "text-align:center;">
+		{{ form.hidden_tag() }}
+		{{ form.first_name.label }} <br>{{ form.first_name( placeholder="John") }}
+		<br>
+		{{ form.last_name.label }} <br>{{ form.last_name(placeholder="Doe") }}
+		<br>
+		{{ form.email.label }} <br>{{ form.email(placeholder="johndoe@example.com") }}
+		<br>
+		{{ form.password.label }} <br>{{ form.password(placeholder="***********") }}
+		<br>
+		{{ form.confirm_password.label }} <br>{{ form.confirm_password(placeholder="***********") }}
+		<br>
+		{{ form.submit() }}
+	</div>
+</form>
+
+
+</body>

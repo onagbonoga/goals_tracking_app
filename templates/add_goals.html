@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add a new Goal</h1>
+
+<form method = "POST", action = "{{ url_for('.add_goals') }}">
+	{{ form.hidden_tag() }}
+	{{ form.goal.label }}<br>{{ form.goal() }}
+	<br>
+	{{ form.priority.label }}<br>{{ form.priority() }}
+	<br>
+	{{ form.todo.label }}<br>{{ form.todo() }}
+	<br>
+	{{ form.submit() }}
+</form>
+{% endblock %}
