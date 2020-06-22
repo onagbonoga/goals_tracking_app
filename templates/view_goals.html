@@ -2,7 +2,17 @@
 {% block content %}
 <h1>Goals</h1>
 {% for goal in goals %}
-<p>{{ goal }}</p>
+<h2>{{ goal.goal }}</h2>
+<ul>
+	{% for k in goal.todo.keys() %}
+	<li><h3>{{ k }}</h3> 
+	{% if goal.todo[k] == False%}
+	Incomplete
+	{% else %}
+	Complete
+	{% endif %}</li>
+	{% endfor %}
+</ul>
 {% endfor %}
 <a href="{{ url_for('Goals.add_goals') }}">Add Goal</a>
 {% endblock %}
