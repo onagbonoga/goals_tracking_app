@@ -13,7 +13,7 @@ def register():
 	if form.validate_on_submit():
 		hashed_password = generate_password_hash(form.password.data)
 		user = User(
-			fform.first_name.data,
+			form.first_name.data,
 			form.last_name.data,
 			form.email.data,
 			hashed_password
