@@ -7,9 +7,12 @@ goals_app = Blueprint('Goals', __name__)
 
 @goals_app.route('/view_goals')
 def view_goals():
-	goals = Goal.query.filter_by(user_id = session['id'])
+	#goals = Goal.query.filter_by(user_id = session['id'])
+	low = Goal.query.filter_by(user_id = session['id'], priority = "low")
+	medium = Goal.query.filter_by(user_id = session['id'], priority = "medium")
+	high = Goal.query.filter_by(user_id = session['id'], priority = "high")
 	#return f"{goals[0].todo}"
-	return render_template('view_goals.html',goals=goals)
+	return render_template('view_goals.html',low = low, medium=medium, high = high)
 
 @goals_app.route('/add_goals',methods =("GET","POST"))
 def add_goals():

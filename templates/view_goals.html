@@ -1,18 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Goals</h1>
-{% for goal in goals %}
-<h2>{{ goal.goal }}</h2>
-<ul>
-	{% for k in goal.todo.keys() %}
-	<li><h3>{{ k }}</h3> 
-	{% if goal.todo[k] == False%}
-	Incomplete
-	{% else %}
-	Complete
-	{% endif %}</li>
+
+<div style = "background-color: #6CF542">
+	<h2>Low Priority</h2>
+	{% for goal in low %}
+	<h3>{{ goal.goal }}</h3>
+	<ul>
+		{% for k in goal.todo.keys() %}
+		<li><h4>{{ k }}</h4> 
+		{% if goal.todo[k] == False%}
+		Incomplete
+		{% else %}
+		Complete
+		{% endif %}</li>
+		{% endfor %}
+	</ul>
 	{% endfor %}
-</ul>
-{% endfor %}
+</div>
+
+<div style = "background-color: #FAF623">
+	<h2>Medium Priority</h2>
+	{% for goal in medium %}
+	<h3>{{ goal.goal }}</h3>
+	<ul>
+		{% for k in goal.todo.keys() %}
+		<li><h4>{{ k }}</h4> 
+		{% if goal.todo[k] == False%}
+		Incomplete
+		{% else %}
+		Complete
+		{% endif %}</li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+</div>
+
+<div style = "background-color: #FA2723">
+	<h2>High Priority</h2>
+	{% for goal in high %}
+	<h3>{{ goal.goal }}</h3>
+	<ul>
+		{% for k in goal.todo.keys() %}
+		<li><h4>{{ k }}</h4> 
+		{% if goal.todo[k] == False%}
+		Incomplete
+		{% else %}
+		Complete
+		{% endif %}</li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+</div>
 <a href="{{ url_for('Goals.add_goals') }}">Add Goal</a>
 {% endblock %}
