@@ -1,4 +1,6 @@
 from app import db
+#from sqlalchemy.ext.mutable import MutableDict
+
 
 class Goal(db.Model):
 	id = db.Column(db.Integer,primary_key=True)
@@ -17,3 +19,6 @@ class Goal(db.Model):
 
 	def __repr__(self):
 		return f"{self.goal}"
+
+
+

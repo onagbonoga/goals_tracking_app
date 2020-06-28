@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import validators,SelectField,TextAreaField,StringField,PasswordField,ValidationError,SubmitField
+from wtforms import BooleanField, validators,SelectField,TextAreaField,StringField,PasswordField,ValidationError,SubmitField
 from werkzeug.security import check_password_hash
 from wtforms.fields.html5 import EmailField
 import email_validator
@@ -16,3 +16,5 @@ def validate():
 	if FlaskForm.validate(self):
 		return True
 	return False
+
+

@@ -8,8 +8,11 @@
 	<br>
 	{{ form.priority.label }}<br>{{ form.priority() }}
 	<br>
-	{{ form.todo.label }}<br>{{ form.todo(placeholder="Seperate items with '|'") }}
+	<button type = "button" onclick = "addTodo()">Add todo item</button>
+	<br>
+	<span id="todoSpan"></span>
 	<br>
 	{{ form.submit() }}
 </form>
+<img src = "{{ url_for('static', filename='images/addBlack.png') }}">
 {% endblock %}

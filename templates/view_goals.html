@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Goals</h1>
 
-<div style = "background-color: #6CF542">
+<div style = "background-color: #b6d991">
 	<h2>Low Priority</h2>
 	{% for goal in low %}
 	<h3>{{ goal.goal }}</h3>
@@ -17,9 +17,32 @@
 		{% endfor %}
 	</ul>
 	{% endfor %}
+
+
+	{% for goal in low %}
+	<span id="goalName">&nbsp;</span>
+		<h3> {{ goal.goal }} </h3>
+		
+		<form method = "POST", action = "{{ url_for('.view_goals') }}">
+			
+			{% for key in goal.todo.keys() %}
+				<span id="fooBar">&nbsp;</span>
+					<script> 
+						var keys = '{{ key| tojson }}';
+						var values = '{{ goal.todo[key]| tojson }}';
+						var name = '{{ goal.goal }}'
+						add(keys, values, name);
+					</script>
+					<br>
+				{% endfor %}
+	
+			<input type="submit" value="Save">
+		</form>
+	{% endfor %}
+	
 </div>
 
-<div style = "background-color: #FAF623">
+<div style = "background-color: #dfe089">
 	<h2>Medium Priority</h2>
 	{% for goal in medium %}
 	<h3>{{ goal.goal }}</h3>
@@ -34,9 +57,11 @@
 		{% endfor %}
 	</ul>
 	{% endfor %}
+
 </div>
 
-<div style = "background-color: #FA2723">
+
+<div style = "background-color: #e0968d">
 	<h2>High Priority</h2>
 	{% for goal in high %}
 	<h3>{{ goal.goal }}</h3>
@@ -52,5 +77,10 @@
 	</ul>
 	{% endfor %}
 </div>
-<a href="{{ url_for('Goals.add_goals') }}">Add Goal</a>
+<a class="btn btn-primary" href="{{ url_for('Goals.add_goals') }}" ><h2>Add Goal<h2></a>
+
+
+
 {% endblock %}
+
+
