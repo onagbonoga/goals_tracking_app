@@ -10,7 +10,12 @@ goals_app = Blueprint('Goals', __name__)
 def view_goals():
 	
 	if request.method == "POST":
-		allGoals = Goal.query.filter_by(user_id = session['id'])
+		if 'save low' in request.form:
+			allGoals = Goal.query.filter_by(user_id = session['id'], priority="low")
+		elif 'save medium' in request.form:
+			allGoals = Goal.query.filter_by(user_id = session['id'], priority="medium")
+		elif 'save high' in request.form:
+			allGoals = Goal.query.filter_by(user_id = session['id'], priority="high")
 		allGoalsD = deSerialize(allGoals)
 		#x = request.form.getlist('something')
 		#return f"{x}"
@@ -20,25 +25,19 @@ def view_goals():
 			i = i + 1
 			for key in eachGoal.todo.keys(): #checking each key in each todo list
 				keyName = "\""+key+"\""
+				keyName = key
 				response = request.form.get(keyName)
-				#keylist.append(response)
-				#return f"{response}"
+				#return f"{keyName}: {response}"
 				if response != None:
-					#eachGoalP = pickle.loads( eachGoal.todo)
-					#return f"{type(eachGoal.todo)}"
-					#y = json.loads(eachGoal.todo)
-					#y['keyName'] = True
+
 					eachGoal.todo[key] = True
 					allGoals[i].todo = json.dumps(eachGoal.todo)
-					#eachGoal.todo = json.dumps(y)
-					
-					#db.session.commit()
-					#return f"{allGoals[i].todo}"
+
 						
 				else:
 					eachGoal.todo[key] = False
 					allGoals[i].todo = json.dumps(eachGoal.todo)
-					#db.session.add(eachGoal)
+					
 			
 			db.session.commit()
 
