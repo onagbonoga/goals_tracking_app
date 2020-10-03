@@ -1,10 +1,12 @@
-<body style = "background-color: #9BA39D; text-align: center;">
+<body style = "background-color: #9BA39D; text-align: center; ">
 	<br>
 	<br>
 	<br>
 	<br>
+	<div class="container">
+		<img style="transform: scale(0.3); background-color: transparent; border:groove 2px;" src="{{ url_for('static', filename='images/logotest.png') }}">
 <div class="form-group">
-	<form method="POST">
+	<form method="POST"  style = "transform: scale(2);">
 		{{ form.hidden_tag() }}
 		{{ form.email.label }} <br> {{ form.email() }}
 		<br>
@@ -20,5 +22,6 @@
 		{{ form.submit() }}
 		<p>Dont have an account yet? <a href = "{{ url_for('User.register') }}">Register Here</a></p>
 	</form>
+</div>
 </div>
 </body>

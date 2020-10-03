@@ -3,7 +3,7 @@ from wtforms import validators,StringField,PasswordField,ValidationError,SubmitF
 from werkzeug.security import check_password_hash
 from wtforms.fields.html5 import EmailField
 import email_validator
-from user.models import User 
+from prol.user.models import User 
 
 
 class RegisterForm(FlaskForm):
@@ -33,11 +33,11 @@ class LoginForm(FlaskForm):
 
 		if user:
 			if not check_password_hash(user.password, self.password.data):
-				self.password.errors.append('Incorrect email of password')
+				self.password.errors.append('Incorrect email or password')
 				return False
 
 			return True
 		else:
-			self.password.errors.append('Incorrect email of password')
+			self.password.errors.append('Incorrect email or password')
 			return False
 

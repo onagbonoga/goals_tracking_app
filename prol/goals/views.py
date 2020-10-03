@@ -1,9 +1,9 @@
 from flask import Flask, Blueprint, url_for, render_template,request, redirect,session
 import json
 
-from app import db
-from goals.models import Goal, GoalMod
-from goals.forms import AddGoalForm
+from prol import db
+from prol.goals.models import Goal, GoalMod
+from prol.goals.forms import AddGoalForm
 goals_app = Blueprint('Goals', __name__)
 
 @goals_app.route('/view_goals',methods =("GET","POST"))
@@ -70,6 +70,17 @@ def add_goals():
 		return redirect(url_for('Goals.view_goals'))
 	return render_template('add_goals.html', form = form)
 
+@goals_app.route('/view_goals_cards', methods = ("GET","POST"))
+def view_goals_cards():
+	low = Goal.query.filter_by(user_id = session['id'], priority = "low")
+	low = deSerialize(low)
+	medium = Goal.query.filter_by(user_id = session['id'], priority = "medium")
+	medium = deSerialize(medium)
+	high = Goal.query.filter_by(user_id = session['id'], priority = "high")
+	high = deSerialize(high)
+
+	return render_template("view_goals_cards.html", low = low, medium = medium, high = high, count = [1,2,3,4])
+
 def parseTodo(todo):
 	#input to this function will be a string with enter to seperate items
 	#this function will store these items as a dict 
@@ -79,14 +90,15 @@ def parseTodo(todo):
 	return result
 
 def deSerialize(goalList):
-	result = []
+	result = [] #storing the todo items as a list instead of a json string
 	for eachGoal in goalList:
 		newTodo = json.loads(eachGoal.todo)
-		result.append(GoalMod(eachGoal.goal,
+		result.append(GoalMod(eachGoal.goal, #goal mod is a class i created to make it easy to extract the data on the template
 				eachGoal.priority,
 				newTodo))
 
 	return result
+
 
 
 

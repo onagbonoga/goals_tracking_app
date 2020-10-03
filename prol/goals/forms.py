@@ -3,7 +3,7 @@ from wtforms import BooleanField, validators,SelectField,TextAreaField,StringFie
 from werkzeug.security import check_password_hash
 from wtforms.fields.html5 import EmailField
 import email_validator
-from goals.models import Goal 
+from prol.goals.models import Goal 
 
 class AddGoalForm(FlaskForm):
 	goal = StringField('Goal', [validators.InputRequired()])

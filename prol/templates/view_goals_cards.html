@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Low Priority</h2>
+<div class="row">
+{% for goal in low %}
+		<div class="column">
+			<div class = "card">
+				<h3>{{ goal.goal }} </h3>
+				<h4>{{ goal.todoLen }} </h4>
+			</div>
+		</div>
+{% endfor %}
+</div>
+<a class="btn btn-primary" href="{{ url_for('Goals.add_goals') }}" ><h2>Add Goal<h2></a>
+{% endblock %}

@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Goals</h1>
 
-<div style = "background-color: #b6d991">
+<div style = "background-color: #b6d991; margin-left: 20px; margin-right:20px;padding-left: 20px;">
 	<h2 style = "background-color: #505e40">Low Priority</h2>
 	
 		<form method = "POST", action = "{{ url_for('.view_goals') }}">
@@ -19,7 +19,7 @@
 		</form>
 </div>
 
-<div style = "background-color: #dfe089">
+<div style = "background-color: #dfe089; margin-left: 20px; margin-right:20px;padding-left: 20px;">
 	<h2 style = "background-color: #848550">Medium Priority</h2>
 	
 		<form method = "POST", action = "{{ url_for('.view_goals') }}">
@@ -38,7 +38,7 @@
 </div>
 
 
-<div style = "background-color: #e0968d">
+<div style = "background-color: #e0968d; margin-left: 20px; margin-right:20px;padding-left: 20px;">
 	<h2 style = "background-color: #75514c">High Priority</h2>
 	
 		<form method = "POST", action = "{{ url_for('.view_goals') }}">

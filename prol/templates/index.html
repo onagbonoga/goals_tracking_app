@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Welcome to the home Page {{ first_name }}</h1>
+<a class="btn btn-primary" href="{{ url_for('Goals.add_goals') }}" ><h2>Add Goal<h2></a>
+
 {% endblock %}

@@ -1,4 +1,4 @@
-from app import db
+from prol import db
 #from sqlalchemy.ext.mutable import MutableDict
 
 
@@ -27,6 +27,8 @@ class GoalMod():
 		self.goal = goal
 		self.priority = priority
 		self.todo = todo
+		self.todoLen = len(self.todo)
+
 
 
 

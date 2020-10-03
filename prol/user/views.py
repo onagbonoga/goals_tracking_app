@@ -1,9 +1,9 @@
 from flask import Flask, url_for, redirect, Blueprint,render_template,session
 from werkzeug.security import generate_password_hash
 
-from app import db
-from user.forms import RegisterForm, LoginForm
-from user.models import User 
+from prol import db
+from prol.user.forms import RegisterForm, LoginForm
+from prol.user.models import User 
 
 user_app = Blueprint('User',__name__)
 

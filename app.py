@@ -1,22 +1,4 @@
-import os
-from flask import Flask 
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate 
+from prol import app
 
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'mysecretkey'
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-Migrate(app,db)
-
-from user.views import user_app 
-from goals.views import goals_app
-
-app.register_blueprint(user_app)
-app.register_blueprint(goals_app)
-
+if __name__ == '__main__':
+	app.run(host='0.0.0.0')
